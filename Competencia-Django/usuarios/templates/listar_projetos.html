@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listar Projetos</title>
+</head>
+<body>
+    <h1>Listar Projetos</h1>
+    <ul>
+        {% for projeto in projetos %}
+            <li>{{ projeto.nome }}</li>
+        {% endfor %}
+
+        {% if not projetos %}
+            <li>Nenhum projeto cadastrado.</li>
+        {% endif %}
+    </ul>
+</body>
+</html>

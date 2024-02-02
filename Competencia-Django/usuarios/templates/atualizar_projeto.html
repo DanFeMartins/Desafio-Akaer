@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Atualizar Projeto</title>
+</head>
+<body>
+    <h1>Atualizar Projeto</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="nome">Novo Nome do Projeto:</label><br>
+        <input type="text" id="nome" name="nome" value="{{ projeto.nome }}"><br>
+        <label for="empresa">Nova Empresa:</label><br>
+        <select id="empresa" name="empresa">
+            {% for empresa in empresas %}
+                <option value="{{ empresa.id }}">{{ empresa.nome }}</option>
+            {% endfor %}
+        </select><br>
+        <button type="submit">Atualizar Projeto</button>
+    </form>
+</body>
+</html>
