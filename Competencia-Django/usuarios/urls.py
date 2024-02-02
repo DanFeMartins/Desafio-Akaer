@@ -19,5 +19,6 @@ urlpatterns = [
     path('listar_projetos/', views.listar_projeto, name='listar_projetos'),
     path('<int:projeto_id>/atualizar_projeto/', views.atualizar_projeto, name='atualizar_projeto'), #deve ser passado o id existente para atualização de um projeto
     path('<int:projeto_id>/deletar_projeto/', views.deletar_projeto, name='deletar_projeto'), #deve ser passado o id existente para exclusão de um projeto
+    path('participar_projeto/', views.participar_projeto, name='participar_projeto'),
 ]
 

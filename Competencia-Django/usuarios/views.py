@@ -126,7 +126,7 @@ def criar_projeto(request):
     
 
 def listar_projeto(request):
-    projetos = Projeto.objects.filter(empresa__usuarios=request.user) #lista todos os projetos presentes no banco de dados
+    projetos = Projeto.objects.filter(usuario=request.user) #lista todos os projetos presentes no banco de dados
     return render(request, 'listar_projetos.html', {'projetos': projetos})
 
 
@@ -154,3 +154,14 @@ def atualizar_projeto(request, projeto_id):
         return redirect('/usuario/listar_projetos/')  # Redirecionar para a página de lista de projetos após a atualização
     else:
         return render(request, 'atualizar_projeto.html', {'projeto': projeto, 'empresas': empresas})
+    
+def participar_projeto(request):
+    if request.method == 'POST':
+        nome_projeto = request.POST.get('nome_projeto')
+        projeto = get_object_or_404(Projeto, nome=nome_projeto)
+        usuario = request.user
+        projeto.usuario.add(usuario)
+        projeto.save()
+        return redirect('/usuario/listar_projetos/')
+    else:
+        return render(request, 'participar_projeto.html') # Redirecionar para a página de lista de projetos após a atualização
